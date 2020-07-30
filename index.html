@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LP Widget</title>
+	<script src="https://lpcdn.lpsnmedia.net/webagent/client-SDK.min.js"></script>
+	<script>lpTag.agentSDK.init();</script>
+	<style>
+		body {
+			background-color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<h1>C4C Integration</h1>
+	<p><a id="C4CLink" href="#" target="_blank">C4C Link</a></p>
+	<p><button href="">Get Chat Data</button></p>
+	<p id="placeForChatData"></p>
+	<script>
+		const c4clink = document.querySelector('#C4CLink');
+		const getChatDataBtn = document.querySelector('#chatDataLink');
+		const placeForChatData = document.querySelector('#placeForChatData');
+		const customerId = new URLSearchParams(window.location.search).get('customerId');
+		const pathToData = 'chatTranscript.lines';
+		
+		c4clink.href = `https://my317315.crm.ondemand.com/sap/public/byd/runtime?bo_ns=http://sap.com/thingTypes&bo=COD_GENERIC&node=Root&operation=OnExtInspect&param.InternalID=${customerId}&param.Type=COD_ACCOUNT_TT&sapbyd-agent=TAB`;
+		getChatDataBtn.addEventListener('click', getChatBtnClickHandler);
+
+		function getChatBtnClickHandler(e) {
+			lpTag.agentSDK.get(pathToData, onSuccess, onError);
+		}
+
+		function onSuccess(data) {
+			console.log(data);
+			
+			let content;
+
+			data.forEach(line => {
+				content+= 'By: ' + line.by + ' Time: ' + line.time + 'Text: ' + line.text + '<br>';
+			});
+
+			placeForChatData.innerHTML = content;
+		};
+
+		function onError(err) {
+			console.log(err);
+		};
+	</script>
+</body>
+</html>
