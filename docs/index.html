@@ -18,7 +18,7 @@
 	<p><button id="getChatData">Get Chat Data</button></p>
 	<p id="placeForChatData"></p>
 	<script>
-		// IMPORTANT 
+		// IMPORTANT!
 		// This widget is hosted in a public repository in order to make it accessible
 		// in the Agent Workspace. It seems only public repos can use the Github pages 
 		// feature which we need to create a link to this widget to be used in LP.
@@ -41,10 +41,10 @@
 		function onSuccess(data) {
 			console.log(data);
 			
-			let content;
+			let content = '';
 
 			data.forEach(line => {
-				content+= 'By: ' + line.by + ' Time: ' + line.time + 'Text: ' + line.text + '<br>';
+				content+= '<p>By: ' + line.by + '<br>Time: ' + line.time + '<br>Text: ' + line.text + '</p>';
 			});
 
 			placeForChatData.innerHTML = content;
