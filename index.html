@@ -13,18 +13,25 @@
 	</style>
 </head>
 <body>
-	<h1>C4C Integration</h1>
-	<p><a id="C4CLink" href="#" target="_blank">C4C Link</a></p>
-	<p><button href="">Get Chat Data</button></p>
+	<h1>LP Integration</h1>
+	<p><a id="dynamicLink" href="#" target="_blank">C4C Link</a></p>
+	<p><button id="getChatData">Get Chat Data</button></p>
 	<p id="placeForChatData"></p>
 	<script>
-		const c4clink = document.querySelector('#C4CLink');
-		const getChatDataBtn = document.querySelector('#chatDataLink');
+		// IMPORTANT 
+		// This widget is hosted in a public repository in order to make it accessible
+		// in the Agent Workspace. It seems only public repos can use the Github pages 
+		// feature which we need to create a link to this widget to be used in LP.
+		// DO NOT put any sensitive or company specific information in this code.
+
 		const placeForChatData = document.querySelector('#placeForChatData');
 		const customerId = new URLSearchParams(window.location.search).get('customerId');
 		const pathToData = 'chatTranscript.lines';
 		
-		c4clink.href = `https://my317315.crm.ondemand.com/sap/public/byd/runtime?bo_ns=http://sap.com/thingTypes&bo=COD_GENERIC&node=Root&operation=OnExtInspect&param.InternalID=${customerId}&param.Type=COD_ACCOUNT_TT&sapbyd-agent=TAB`;
+		const dynamicLink = document.querySelector('#dynamicLink');
+		dynamicLink.href = `https://test/customerId/${customerId}`;
+		
+		const getChatDataBtn = document.querySelector('#getChatData');
 		getChatDataBtn.addEventListener('click', getChatBtnClickHandler);
 
 		function getChatBtnClickHandler(e) {
