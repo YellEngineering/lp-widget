@@ -53,7 +53,7 @@
 		}
 		
 		function getAgentInfoBtnClickHandler(e) {
-			lpTag.agentSDK.get('agentlInfo', data => {
+			lpTag.agentSDK.get('agentlInfo.agentEmail', data => {
 				console.log(data)
 			}, onError);
 		}
