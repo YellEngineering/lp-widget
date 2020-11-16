@@ -53,7 +53,7 @@
 		}
 		
 		function getAgentInfoBtnClickHandler(e) {
-			lpTag.agentSDK.get('chattingAgentInfo.agentId', data => {
+			lpTag.agentSDK.get('chattingAgentInfo', data => {
 				console.log(data)
 			}, onError);
 		}
