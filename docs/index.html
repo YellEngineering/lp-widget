@@ -16,6 +16,7 @@
 	<h1>LP Integration</h1>
 	<p><a id="dynamicLink" href="#" target="_blank">C4C Link</a></p>
 	<p><button id="getChatData">Get Chat Data</button></p>
+	<p><button id="getPersonalInfo">Get personal info</button></p>
 	<p id="placeForChatData"></p>
 	<script>
 		// IMPORTANT!
@@ -33,11 +34,20 @@
 		
 		const getChatDataBtn = document.querySelector('#getChatData');
 		getChatDataBtn.addEventListener('click', getChatBtnClickHandler);
+		
+		const getPersonalInfoBtn = document.querySelector('#getPersonalInfo');
+		getPersonalInfoBtn.addEventListener('click', getPersonalInfoBtnClickHandler);
 
 		function getChatBtnClickHandler(e) {
 			lpTag.agentSDK.get(pathToData, onSuccess, onError);
 		}
-
+		
+		function getPersonalInfoBtnClickHandler(e) {
+			lpTag.agentSDK.get('SDE.personalInfo', data => {
+				console.log(data)
+			}, onError);
+		}
+		
 		function onSuccess(data) {
 			console.log(data);
 			
