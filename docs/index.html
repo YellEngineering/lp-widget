@@ -53,6 +53,10 @@
 		function onError(err) {
 			console.log(err);
 		};
+		
+		lpTag.agentSDK.bind('SDE.personalInfo', data => {
+			console.log(data.newValue);
+		});
 	</script>
 </body>
 </html>
