@@ -17,6 +17,7 @@
 	<p><a id="dynamicLink" href="#" target="_blank">C4C Link</a></p>
 	<p><button id="getChatData">Get Chat Data</button></p>
 	<p><button id="getPersonalInfo">Get personal info</button></p>
+	<p><button id="getAgentInfo">Get agent info</button></p>
 	<p id="placeForChatData"></p>
 	<script>
 		// IMPORTANT!
@@ -37,6 +38,9 @@
 		
 		const getPersonalInfoBtn = document.querySelector('#getPersonalInfo');
 		getPersonalInfoBtn.addEventListener('click', getPersonalInfoBtnClickHandler);
+		
+		const getAgentInfoBtn = document.querySelector('#getAgentInfo');
+		getAgentInfoBtn.addEventListener('click', getAgentInfoBtnClickHandler);
 
 		function getChatBtnClickHandler(e) {
 			lpTag.agentSDK.get(pathToData, onSuccess, onError);
@@ -44,6 +48,12 @@
 		
 		function getPersonalInfoBtnClickHandler(e) {
 			lpTag.agentSDK.get('SDE.personalInfo', data => {
+				console.log(data)
+			}, onError);
+		}
+		
+		function getAgentInfoBtnClickHandler(e) {
+			lpTag.agentSDK.get('agentlInfo', data => {
 				console.log(data)
 			}, onError);
 		}
@@ -63,10 +73,6 @@
 		function onError(err) {
 			console.log(err);
 		};
-		
-		lpTag.agentSDK.bind('SDE', data => {
-			console.log('personalInfo', data.newValue);
-		});
 	</script>
 </body>
 </html>
