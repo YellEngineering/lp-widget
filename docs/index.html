@@ -56,6 +56,10 @@
 			lpTag.agentSDK.get('agentInfo', data => {
 				console.log(data)
 			}, onError);
+			
+			lpTag.agentSDK.get('chattingAgentInfo', data => {
+				console.log(data);
+			}, onError);
 		}
 		
 		function onSuccess(data) {
