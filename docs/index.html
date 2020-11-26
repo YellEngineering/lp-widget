@@ -18,7 +18,7 @@
 	<p><button id="getChatData">Get Chat Data</button></p>
 	<p><button id="getPersonalInfo">Get personal info</button></p>
 	<p><button id="getAgentInfo">Get agent info</button></p>
-	<p><button id="getChatStartUrl">Get chat start url</button></p>
+	<p><button id="getChatInfo">Get chat info</button></p>
 	<p id="placeForChatData"></p>
 	<script>
 		// IMPORTANT!
@@ -43,11 +43,11 @@
 		const getAgentInfoBtn = document.querySelector('#getAgentInfo');
 		getAgentInfoBtn.addEventListener('click', getAgentInfoBtnClickHandler);
 		
-		const getChatStartUrlBtn = document.querySelector('#getChatStartUrl');
-		getChatStartUrlBtn.addEventListener('click', getChatStartUrlBtnClickHandler);
+		const getChatInfoBtn = document.querySelector('#getChatInfo');
+		getChatInfoBtn.addEventListener('click', getChatInfoBtnClickHandler);
 		
-		function getChatStartUrlBtnClickHandler (e) {
-			lpTag.agentSDK.get('chatInfo.chatStartUrl', data => {
+		function getChatInfoBtnClickHandler (e) {
+			lpTag.agentSDK.get('chatInfo', data => {
 				console.log(data);
 			}, onError);
 		}
